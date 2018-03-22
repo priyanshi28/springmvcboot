@@ -1,22 +1,27 @@
 package controllermovie;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document(collection = "movie")
 public class Allmovie {
-	private int id;
+	@Id
+	/*@Autowired
+	MovieService movieService ;*/
+	private String id;
 	private String name;
 	private String description;
 	public Allmovie(){
 		
 	}
-	public Allmovie(int id, String name, String description) {
+	public Allmovie(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -32,5 +37,11 @@ public class Allmovie {
 		this.description = description;
 	}
 	
-
+	
+	@Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("Id:- " + getId() + ", Name:- " + getName() + ", Description:- " + getDescription());
+        return str.toString();
+    }
 }
